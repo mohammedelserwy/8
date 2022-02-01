@@ -17,6 +17,7 @@
     "@redux-offline/redux-offline": "^2.6.0-native.1",
     "add": "^2.0.6",
     "axios": "^0.25.0",
+    "patch-package": "^6.4.7",
     "react": "17.0.2",
     "react-native": "0.67.2",
     "react-native-gesture-handler": "^2.2.0",
