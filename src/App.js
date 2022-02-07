@@ -1,69 +1,114 @@
-import React, {Component} from 'react';
-import {
-  I18nManager,
-  KeyboardAvoidingView,
-  Modal,
-  Platform,
-  View,
-} from 'react-native';
-import {CommonActions, NavigationContainer} from '@react-navigation/native';
-import {Provider} from 'react-redux';
-import RouterNavigator from './RouterNavigator';
-import {navigationRef, isReadyRef, reset} from './NavigationActions';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import {changeLng} from './Config';
-import {Spinner, VectorIcon} from './components/assets/UIComponents';
-import Store from './store';
-
-function AppContainer(props) {
-  return (
-    <Provider store={Store}>
-        <NavigationContainer
-          ref={navigationRef}
-          onReady={() => {
-            isReadyRef.current = true;
-          }}>
-          <KeyboardAvoidingView
-            style={{flex: 1}}
-            behavior={Platform.OS === 'ios' ? 'padding' : null}>
-            <RouterNavigator  />
-          </KeyboardAvoidingView>
-        </NavigationContainer>
-    </Provider>
-  );
-}
+import React, { Component } from 'react';
+import { Image, Text, View, TouchableOpacity, ScrollView } from 'react-native';
+import { firstPageStyles } from './components/assets/styles/Styles';
+import Icon from 'react-native-vector-icons/Ionicons';
 class App extends Component {
-  state = {lng: false, lang: '', loading: false};
-  async componentDidMount() {
-    let lang = await AsyncStorage.getItem('language');
-    if (lang) {
-      this.setState({lng: true, lang: lang});
-      changeLng(lang);
-    } else {
-      this.setState({lng: true});
-    }
-    Store.subscribe(() => {
-      const storeState = Store.getState();
-      if (storeState.mainR.loading) {
-        this.setState({loading: true});
-      } else {
-        this.setState({loading: false});
-      }
-    });
-  }
   render() {
-    const {lng, lang, loading} = this.state;
-    if (lng) {
-      return (
-        <View style={{flex: 1}}>
-          <AppContainer lang={lang} />
-          {loading ? <Spinner /> : null}
+    return (
+      <ScrollView style={firstPageStyles.pageView}>
+        <View style={firstPageStyles.firstView}>
+          <TouchableOpacity>
+            <View style={firstPageStyles.itemView}>
+              <Icon name="arrow-forward" color={'white'} size={30} />
+              <Text style={firstPageStyles.seventhText}>المهام الرئيسية </Text>
+            </View>
+          </TouchableOpacity>
+
+          <View style={firstPageStyles.secondView}>
+            <View style={firstPageStyles.innerFirstView}>
+              <Image source={require("./components/assets/images/bank.png")} />
+            </View>
+            <View style={firstPageStyles.innerSecondView}>
+              <View style={firstPageStyles.firstContainer}>
+                <Image source={require("./components/assets/images/card.png")} />
+                <Text style={firstPageStyles.firstTextInContainer}> عنوان المهمة</Text>
+              </View>
+              <View style={firstPageStyles.secondContainer}>
+                <Image source={require("./components/assets/images/marker.png")} />
+                <Text style={firstPageStyles.secondTextInContainer}>Mecca, Al Jumum</Text>
+              </View>
+            </View>
+          </View>
+
         </View>
-      );
-    } else {
-      return <View />;
-    }
+        <View style={firstPageStyles.sameContainerOne}>
+          <View style={firstPageStyles.innerFirstView}>
+            <Image source={require("./components/assets/images/bank.png")} />
+          </View>
+          <View style={firstPageStyles.innerSecondView}>
+            <View style={firstPageStyles.firstContainer}>
+              <Image source={require("./components/assets/images/card.png")} />
+              <Text style={firstPageStyles.firstTextInContainer}> عنوان المهمة</Text>
+            </View>
+            <View style={firstPageStyles.secondContainer}>
+              <Image source={require("./components/assets/images/marker.png")} />
+              <Text style={firstPageStyles.secondTextInContainer}>Mecca, Al Jumum</Text>
+            </View>
+          </View>
+        </View>
+        <View style={firstPageStyles.sameContainerTwo}>
+          <View style={firstPageStyles.innerFirstView}>
+            <Image source={require("./components/assets/images/bank.png")} />
+          </View>
+          <View style={firstPageStyles.innerSecondView}>
+            <View style={firstPageStyles.firstContainer}>
+              <Image source={require("./components/assets/images/card.png")} />
+              <Text style={firstPageStyles.firstTextInContainer}> عنوان المهمة</Text>
+            </View>
+            <View style={firstPageStyles.secondContainer}>
+              <Image source={require("./components/assets/images/marker.png")} />
+              <Text style={firstPageStyles.secondTextInContainer}>Mecca, Al Jumum</Text>
+            </View>
+          </View>
+        </View>
+        <View style={firstPageStyles.sameContainerTwo}>
+          <View style={firstPageStyles.innerFirstView}>
+            <Image source={require("./components/assets/images/bank.png")} />
+          </View>
+          <View style={firstPageStyles.innerSecondView}>
+            <View style={firstPageStyles.firstContainer}>
+              <Image source={require("./components/assets/images/card.png")} />
+              <Text style={firstPageStyles.firstTextInContainer}> عنوان المهمة</Text>
+            </View>
+            <View style={firstPageStyles.secondContainer}>
+              <Image source={require("./components/assets/images/marker.png")} />
+              <Text style={firstPageStyles.secondTextInContainer}>Mecca, Al Jumum</Text>
+            </View>
+          </View>
+        </View>
+        <View style={firstPageStyles.sameContainerTwo}>
+          <View style={firstPageStyles.innerFirstView}>
+            <Image source={require("./components/assets/images/bank.png")} />
+          </View>
+          <View style={firstPageStyles.innerSecondView}>
+            <View style={firstPageStyles.firstContainer}>
+              <Image source={require("./components/assets/images/card.png")} />
+              <Text style={firstPageStyles.firstTextInContainer}> عنوان المهمة</Text>
+            </View>
+            <View style={firstPageStyles.secondContainer}>
+              <Image source={require("./components/assets/images/marker.png")} />
+              <Text style={firstPageStyles.secondTextInContainer}>Mecca, Al Jumum</Text>
+            </View>
+          </View>
+        </View>
+        <View style={firstPageStyles.sameContainerTwo}>
+          <View style={firstPageStyles.innerFirstView}>
+            <Image source={require("./components/assets/images/bank.png")} />
+          </View>
+          <View style={firstPageStyles.innerSecondView}>
+            <View style={firstPageStyles.firstContainer}>
+              <Image source={require("./components/assets/images/card.png")} />
+              <Text style={firstPageStyles.firstTextInContainer}> عنوان المهمة</Text>
+            </View>
+            <View style={firstPageStyles.secondContainer}>
+              <Image source={require("./components/assets/images/marker.png")} />
+              <Text style={firstPageStyles.secondTextInContainer}>Mecca, Al Jumum</Text>
+            </View>
+          </View>
+        </View>
+
+      </ScrollView>
+    );
   }
 }
-
 export default App;
